@@ -4,7 +4,7 @@ from datetime import datetime
 
 class result_structure:
     '''
-    Takes list of dictionary as input.
+    Analyze the data and generates result.
     '''
     def __init__(self, data, timestamp):
         self.data = data
@@ -17,25 +17,26 @@ class result_structure:
         self.number_of_prime_numbers = self.get_number_of_prime_numbers()
         self.number_of_even_numbers, self.number_of_odd_numbers = self.get_number_of_even_and_odd_numbers()
 
-    def get_b_data(self):
+    def get_b_data(self) -> list():
+        "returns a list with value stored with 'b' key"
         new_list = []
         for i in self.data:
             new_list.append(i["b"])
         return new_list
 
-    def get_max_number(self):
+    def get_max_number(self) -> int():
         return max(self.b_data)
 
-    def get_min_number(self):
+    def get_min_number(self) -> int:
         return min(self.b_data)
 
-    def get_first_number(self):
+    def get_first_number(self) -> int:
         return self.b_data[0]
 
-    def get_last_number(self):
+    def get_last_number(self) -> int:
         return self.b_data[-1]
 
-    def get_number_of_prime_numbers(self):
+    def get_number_of_prime_numbers(self) -> int:
         count = 0
         for number in self.b_data:
             if self.isprime(number):
@@ -53,13 +54,14 @@ class result_structure:
 
         return count_even, count_odd
 
-    def isprime(self, num):
+    def isprime(self, num) -> bool:
+        "Checks if a number is prime or not."
         for n in range(2,int(num**0.5)+1):
             if num%n==0:
                 return False
         return True
 
-    def get_result(self):
+    def get_result(self) -> dict:
         return {
             "max_number": self.max_number,
             "min_number": self.min_number,
