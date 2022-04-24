@@ -6,7 +6,7 @@ open_ports = []
 max_port_range = 65535
 
 async def connect_to_ws(ws,port):
-    print(port)
+    print(f"now scaning port: {port}")
     try:
         ws = ws + ":" + str(port)
         async with websockets.connect(ws) as websocket:
@@ -34,4 +34,4 @@ if __name__ == "__main__":
     for thread in threads:
         thread.join()
 
-    print(open_ports)
+    print(f"The open ports to connect websocket are: {open_ports}")
